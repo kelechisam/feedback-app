@@ -22,6 +22,7 @@ jobs:
 
   test:
     name: Test
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -47,6 +48,6 @@ jobs:
         script: |
             cd feedback-app
             git pull origin
-            cd
+            npm install && npm run build
             sudo cp -r build/* /var/www/html
             sudo systemctl restart nginx
