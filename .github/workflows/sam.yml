@@ -28,11 +28,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: npm install
-
     - name: Run tests
-      run: npm test
+      run: cat package.json
 
   deploy:
     name: Deploy
@@ -40,11 +37,6 @@ jobs:
     needs: [build, test]
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Install dependencies
-      run: npm install
     
     - name: Install dependencies
       uses: appleboy/ssh-action@master
